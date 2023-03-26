@@ -12,9 +12,9 @@
         android:id="@+id/layout_lang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
         >
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_Noordersyet"
@@ -168,6 +168,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
         >
 
         <androidx.appcompat.widget.AppCompatTextView

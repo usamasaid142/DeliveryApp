@@ -25,7 +25,7 @@ class LoginFragment : Fragment() {
 
    private lateinit var binding:LoginfragmentBinding
    private val viewmodel:RegisterViewModel by viewModels()
-
+    private var pLANGNO="1"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,7 +46,7 @@ class LoginFragment : Fragment() {
         binding.btnLogin.setOnClickListener {
 
             if (!binding.etUserId.text.isNullOrEmpty() && !binding.etPassword.text.isNullOrEmpty()){
-                viewmodel.login(LoginDeliveryRequest(LoginDelivery(binding.etUserId.text.toString(),"1",binding.etPassword.text.toString())))
+                viewmodel.login(LoginDeliveryRequest(LoginDelivery(binding.etUserId.text.toString(),pLANGNO,binding.etPassword.text.toString())))
             }else{
                 requireContext().displayToastText("please enter userId and password")
             }

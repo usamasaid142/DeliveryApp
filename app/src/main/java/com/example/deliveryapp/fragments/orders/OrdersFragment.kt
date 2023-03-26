@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -19,6 +20,7 @@ import com.example.deliveryapp.model.orders.DeliveryBillRequest
 import com.example.deliveryapp.model.orders.DeliveryBillValue
 import com.example.deliveryapp.utils.Resource
 import com.example.deliveryapp.viewmodel.DeliveryViewModel
+import com.example.deliveryapp.viewmodel.SharedDataViewmodel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,7 +31,10 @@ class OrdersFragment : Fragment() {
     private lateinit var ordersItemsAdapter: OrdersItemsAdapter
     private val viewmodel: DeliveryViewModel by viewModels()
     private val args: OrdersFragmentArgs by navArgs()
+    val sharedDataViewmodel: SharedDataViewmodel by activityViewModels()
     private var choose = ""
+    private var dateFrom=""
+    private var dateTo=""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,8 +49,9 @@ class OrdersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.tvUsername.text = args.delivery.P_DLVRY_Name
         OrdersRecylerview()
-        ordersCallBack()
+        getOrders()
         initButton()
+        ordersCallBack()
     }
 
 
@@ -115,6 +121,16 @@ class OrdersFragment : Fragment() {
                             ordersItemsAdapter.notifyDataSetChanged()
 
                         }
+                        "date" -> {
+                            val orders = it.data?.data?.deliveryBills?.filter {
+                                it.bILLDATE in dateFrom..dateTo
+
+                            }
+                            orders?.let { it1 -> updateUi(it1) }
+                            ordersItemsAdapter.submitList(orders)
+                            ordersItemsAdapter.notifyDataSetChanged()
+
+                        }
 
                         else -> {
                             it.data?.data?.let { it1 -> updateUi(it1.deliveryBills) }
@@ -158,6 +174,15 @@ class OrdersFragment : Fragment() {
     }
 
     private fun getOrders(){
+
+        sharedDataViewmodel.date.observe(viewLifecycleOwner, Observer {
+            if (!it.from.isNullOrEmpty() && !it.to.isNullOrEmpty()){
+                dateFrom=it.from
+                dateTo=it.to
+                choose="date"
+                ordersCallBack()
+            }
+        })
 
     }
 

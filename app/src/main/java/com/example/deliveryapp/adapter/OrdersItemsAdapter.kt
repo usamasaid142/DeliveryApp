@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.deliveryapp.DeliverApp
 import com.example.deliveryapp.R
 import com.example.deliveryapp.databinding.ItemLayoutOrdersBinding
 import com.example.deliveryapp.model.orders.DeliveryBill
@@ -31,17 +32,17 @@ class OrdersItemsAdapter():ListAdapter<DeliveryBill,OrdersItemsAdapter.ViewHolde
             "1"->{
                 holder.binding.layoutOrdersDetails.setBackgroundColor(Color.parseColor("#808080"))
                 holder.binding.status.setTextColor(Color.parseColor("#808080"))
-                holder.binding.status.text="Delivered"
+                holder.binding.status.text=DeliverApp.application.getString(R.string.Delivered)
             }
             "2"->{
                 holder.binding.layoutOrdersDetails.setBackgroundColor(Color.parseColor("#004F62"))
                 holder.binding.status.setTextColor(Color.parseColor("#004F62"))
-                holder.binding.status.text="Delivering"
+                holder.binding.status.text=DeliverApp.application.getString(R.string.Delivering)
             }
             "3"->{
                 holder.binding.layoutOrdersDetails.setBackgroundColor(Color.parseColor("#D42A0F"))
                 holder.binding.status.setTextColor(Color.parseColor("#D42A0F"))
-                holder.binding.status.text="Returned"
+                holder.binding.status.text=DeliverApp.application.getString(R.string.Returned)
             }else->{
             holder.binding.layoutOrdersDetails.setBackgroundColor(Color.parseColor("#29D40F"))
             holder.binding.status.setTextColor(Color.parseColor("#29D40F"))

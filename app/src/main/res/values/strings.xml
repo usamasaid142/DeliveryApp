@@ -21,4 +21,8 @@
     <string name="from">From</string>
     <string name="to">To</string>
     <string name="cancel">Cancel</string>
+    <string name="Delivered">Delivered</string>
+    <string name="Delivering">Delivering</string>
+    <string name="Returned">Returned</string>
+    <string name="password">Password</string>
 </resources>

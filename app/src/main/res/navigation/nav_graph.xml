@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.deliveryapp.fragments.splash.SplashFragment"
+        android:label="splashfragment"
+        tools:layout="@layout/splashfragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.deliveryapp.fragments.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/loginfragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_ordersFragment"
+            app:destination="@id/ordersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ordersFragment"
+        android:name="com.example.deliveryapp.fragments.orders.OrdersFragment"
+        android:label="oredersfragment"
+        tools:layout="@layout/oredersfragment" >
+        <action
+            android:id="@+id/action_ordersFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+</navigation>

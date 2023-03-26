@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.deliveryapp.R
@@ -24,36 +25,44 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class OrdersFragment : Fragment() {
 
-    private lateinit var binding:OredersfragmentBinding
-    private lateinit var ordersItemsAdapter:OrdersItemsAdapter
-    private val viewmodel:DeliveryViewModel by viewModels()
-    private val args:OrdersFragmentArgs by navArgs()
+    private lateinit var binding: OredersfragmentBinding
+    private lateinit var ordersItemsAdapter: OrdersItemsAdapter
+    private val viewmodel: DeliveryViewModel by viewModels()
+    private val args: OrdersFragmentArgs by navArgs()
+    private var choose = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding= OredersfragmentBinding.inflate(layoutInflater,container,false)
+        binding = OredersfragmentBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tvUsername.text=args.delivery.P_DLVRY_Name
+        binding.tvUsername.text = args.delivery.P_DLVRY_Name
         OrdersRecylerview()
         ordersCallBack()
         initButton()
     }
 
 
-    private fun initButton(){
+    private fun initButton() {
+
+        binding.layoutFilter.setOnClickListener {
+            val action=OrdersFragmentDirections.actionOrdersFragmentToDilaogFragment("date")
+            findNavController().navigate(action)
+        }
 
         binding.btnNew.setOnClickListener {
             binding.btnOthers.setBackgroundResource(R.drawable.bg_editext_login)
             binding.btnNew.setTextColor(Color.WHITE)
             binding.btnNew.setBackgroundResource(R.drawable.bg_button_login)
             binding.btnOthers.setTextColor(Color.parseColor("#004F62"))
+            choose = "New"
+            ordersCallBack()
 
         }
         binding.btnOthers.setOnClickListener {
@@ -61,6 +70,8 @@ class OrdersFragment : Fragment() {
             binding.btnNew.setTextColor(Color.parseColor("#004F62"))
             binding.btnNew.setBackgroundResource(R.drawable.bg_editext_login)
             binding.btnOthers.setTextColor(Color.WHITE)
+            choose = "Others"
+            ordersCallBack()
         }
     }
 
@@ -74,31 +85,67 @@ class OrdersFragment : Fragment() {
         }
     }
 
-    private fun ordersCallBack(){
+    private fun ordersCallBack() {
 
-        viewmodel.deliveryItemsresponse.observe(viewLifecycleOwner, Observer {
-            when(it){
+        viewmodel.deliveryItemsresponse.observe(viewLifecycleOwner, Observer { it ->
+            when (it) {
 
-                is Resource.Loading->{
-                    binding.progressBar.visibility=View.VISIBLE
+                is Resource.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
                 }
 
-                is Resource.sucess->{
-                    binding.progressBar.visibility=View.GONE
-                    it.data?.data?.deliveryBills?.let { it1 -> updateUi(it1) }
-                    ordersItemsAdapter.submitList(it.data?.data?.deliveryBills)
-                    ordersItemsAdapter.notifyDataSetChanged()
+                is Resource.sucess -> {
+                    binding.progressBar.visibility = View.GONE
+                    when (choose) {
+                        "Others" -> {
+                            val orders = it.data?.data?.deliveryBills?.filter {
+                                it.dLVRYSTATUSFLG == "1" || it.dLVRYSTATUSFLG == "2" || it.dLVRYSTATUSFLG == "3"
+                            }
+                            orders?.let { it1 -> updateUi(it1) }
+                            ordersItemsAdapter.submitList(orders)
+                            ordersItemsAdapter.notifyDataSetChanged()
+                        }
+                        "New" -> {
+                            val orders = it.data?.data?.deliveryBills?.filter {
+                                it.dLVRYSTATUSFLG != "1" && it.dLVRYSTATUSFLG != "2" && it.dLVRYSTATUSFLG != "3"
+
+                            }
+                            orders?.let { it1 -> updateUi(it1) }
+                            ordersItemsAdapter.submitList(orders)
+                            ordersItemsAdapter.notifyDataSetChanged()
+
+                        }
+
+                        else -> {
+                            it.data?.data?.let { it1 -> updateUi(it1.deliveryBills) }
+                            ordersItemsAdapter.submitList(it.data?.data?.deliveryBills)
+                            ordersItemsAdapter.notifyDataSetChanged()
+                        }
+
+                    }
+
                 }
 
-                is Resource.Error->{
-                    binding.progressBar.visibility=View.GONE
-                    Snackbar.make(requireView(), "${it.data?.result?.errMsg}", Snackbar.LENGTH_SHORT).show()
+                is Resource.Error -> {
+                    binding.progressBar.visibility = View.GONE
+                    Snackbar.make(
+                        requireView(),
+                        "${it.data?.result?.errMsg}",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
                 }
             }
 
         })
 
-        viewmodel.getDeliveryBillsItems(DeliveryBillRequest(DeliveryBillValue(args.delivery.P_DLVRY_NO,args.delivery.P_LANG_NO)))
+        viewmodel.getDeliveryBillsItems(
+            DeliveryBillRequest(
+                DeliveryBillValue(
+                    args.delivery.P_DLVRY_NO,
+                    args.delivery.P_LANG_NO
+                )
+            )
+        )
     }
 
 
@@ -108,6 +155,10 @@ class OrdersFragment : Fragment() {
         } else {
             binding.layoutNoOrdersimage.visibility = View.GONE
         }
+    }
+
+    private fun getOrders(){
+
     }
 
 }

@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_loginFragment_to_ordersFragment"
             app:destination="@id/ordersFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_dilaogFragment"
+            app:destination="@id/dilaogFragment" />
     </fragment>
     <fragment
         android:id="@+id/ordersFragment"
@@ -34,10 +37,17 @@
         <argument
             android:name="delivery"
             app:argType="com.example.deliveryapp.model.DeliveryBillInfo" />
+        <action
+            android:id="@+id/action_ordersFragment_to_dilaogFragment"
+            app:destination="@id/dilaogFragment" />
     </fragment>
     <dialog
         android:id="@+id/dilaogFragment"
         android:name="com.example.deliveryapp.fragments.dialog.DilaogFragment"
         android:label="dilaogfragment"
-        tools:layout="@layout/dilaogfragment" />
+        tools:layout="@layout/dilaogfragment" >
+        <argument
+            android:name="choose"
+            app:argType="string" />
+    </dialog>
 </navigation>

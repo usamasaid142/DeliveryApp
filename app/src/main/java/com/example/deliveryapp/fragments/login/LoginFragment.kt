@@ -53,7 +53,8 @@ class LoginFragment : Fragment() {
         }
 
         binding.ivLang.setOnClickListener {
-            findNavController().navigate(R.id.dilaogFragment)
+            val action=LoginFragmentDirections.actionLoginFragmentToDilaogFragment("lang")
+            findNavController().navigate(action)
         }
 
     }

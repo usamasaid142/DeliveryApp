@@ -15,4 +15,9 @@
     <string name="total_price">Total price</string>
     <string name="date">Date</string>
     <string name="order_details">Order Details</string>
+    <string name="filter">Filter</string>
+    <string name="order_date">Order Date</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="cancel">Cancel</string>
 </resources>

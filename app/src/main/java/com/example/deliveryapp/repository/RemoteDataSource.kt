@@ -5,6 +5,7 @@ import com.example.deliveryapp.api.BaseDataSource
 import com.example.deliveryapp.model.LoginDelivery
 import com.example.deliveryapp.model.LoginDeliveryRequest
 import com.example.deliveryapp.model.LoginResponse
+import com.example.deliveryapp.model.orders.DeliveryBillRequest
 import javax.inject.Inject
 
 class RemoteDataSource @Inject constructor(private val apiService: ApiService):BaseDataSource(){
@@ -13,4 +14,5 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService):B
 //        getResult { apiService.Login(login) }
 
     suspend fun login(loginUser: LoginDeliveryRequest)=apiService.Login(loginUser)
+    suspend fun getDeliveryBillsItems(deliveryBillRequest: DeliveryBillRequest)=apiService.getDeliveryBillsItems(deliveryBillRequest)
 }

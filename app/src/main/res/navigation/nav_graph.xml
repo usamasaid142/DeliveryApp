@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_ordersFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <argument
+            android:name="delivery"
+            app:argType="com.example.deliveryapp.model.DeliveryBillInfo" />
     </fragment>
     <dialog
         android:id="@+id/dilaogFragment"

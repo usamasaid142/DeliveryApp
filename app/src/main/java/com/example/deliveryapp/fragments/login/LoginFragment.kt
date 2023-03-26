@@ -10,11 +10,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.deliveryapp.R
-import com.example.deliveryapp.api.ResultEndPoint
 import com.example.deliveryapp.databinding.LoginfragmentBinding
+import com.example.deliveryapp.model.DeliveryBillInfo
 import com.example.deliveryapp.model.LoginDelivery
 import com.example.deliveryapp.model.LoginDeliveryRequest
-import com.example.deliveryapp.model.LoginResponse
 import com.example.deliveryapp.utils.Resource
 import com.example.deliveryapp.utils.displayToastText
 import com.example.deliveryapp.viewmodel.RegisterViewModel
@@ -72,7 +71,9 @@ class LoginFragment : Fragment() {
                     if (loginresponse.data?.data?.deliveryName==null){
                         Toast.makeText(requireContext(), "${loginresponse.data?.result?.errMsg}", Toast.LENGTH_SHORT).show()
                     }else {
-                        val action = LoginFragmentDirections.actionLoginFragmentToOrdersFragment()
+                        val action = LoginFragmentDirections.actionLoginFragmentToOrdersFragment(
+                            DeliveryBillInfo("1010","1",loginresponse.data?.data?.deliveryName)
+                        )
                         findNavController().navigate(action)
                         Toast.makeText(
                             requireContext(),

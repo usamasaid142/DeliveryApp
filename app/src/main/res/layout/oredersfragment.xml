@@ -13,8 +13,8 @@
             android:id="@+id/layout_header"
             android:layout_width="match_parent"
             android:layout_height="128dp"
-            app:layout_constraintEnd_toEndOf="parent"
             android:background="@color/red"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -25,9 +25,8 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="43dp"
                 android:background="@drawable/layoutconstraint_bg_whitecolor"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                >
+                app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/iv_user"
@@ -41,6 +40,7 @@
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_Username"
                 android:layout_width="wrap_content"
@@ -58,20 +58,20 @@
                 android:id="@+id/layout_filter"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginTop="43dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/layoutconstraint_bg_whitecolor"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                >
+                app:layout_constraintTop_toTopOf="parent">
+
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/iv_filter"
                     android:layout_width="14.27dp"
                     android:layout_height="12.02dp"
                     android:src="@drawable/ic_filter"
-                    app:layout_constraintStart_toStartOf="@+id/layout_filter"
                     app:layout_constraintBottom_toBottomOf="@+id/layout_filter"
                     app:layout_constraintEnd_toEndOf="@+id/layout_filter"
+                    app:layout_constraintStart_toStartOf="@+id/layout_filter"
                     app:layout_constraintTop_toTopOf="@+id/layout_filter" />
 
 
@@ -87,13 +87,14 @@
                 android:src="@drawable/ic_resturant_logo"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iv_products"
                 android:layout_width="127.11dp"
                 android:layout_height="78.1dp"
-                android:layout_marginEnd="48.9dp"
                 android:layout_marginStart="20dp"
-               android:layout_marginTop="50dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="48.9dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/ic_products"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -103,97 +104,133 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_buttons"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:padding="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_header"
-            app:layout_constraintWidth_percent=".8">
+            app:layout_constraintWidth_percent=".7">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_new"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_button_login"
-                android:text="New"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btn_others"
-                app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btn_new"
+                            android:layout_width="150dp"
+                            android:layout_height="36dp"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/bg_editext_login"
+                            android:text="New"
+                            android:textColor="@color/purple_500"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_others"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_editext_login"
-                android:text="Others"
-                android:textColor="@color/purple_500"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/btn_new"
-                app:layout_constraintTop_toTopOf="parent" />
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btn_others"
+                            android:layout_width="130dp"
+                            android:layout_height="36dp"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/bg_button_login"
+                            android:text="Others"
+                            android:textColor="@color/white"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/iv_backgroundimage"
-            android:layout_width="224.1dp"
-            android:layout_height="183.58dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="20dp"
-            android:adjustViewBounds="true"
-            android:src="@drawable/ic_orderpath"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_noOrdersimage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            />
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/iv_search"
-            android:layout_width="67.32dp"
-            android:layout_height="89.76dp"
-            android:adjustViewBounds="true"
-            android:src="@drawable/ic_search"
-            app:layout_constraintTop_toTopOf="@+id/iv_backgroundimage"
-            app:layout_constraintEnd_toEndOf="@+id/iv_backgroundimage"
-            app:layout_constraintStart_toStartOf="@+id/iv_backgroundimage"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_backgroundimage"
-            />
+            android:visibility="gone"
+            >
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_Noordersyet"
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_backgroundimage"
+                android:layout_width="224.1dp"
+                android:layout_height="183.58dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_orderpath"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_search"
+                android:layout_width="67.32dp"
+                android:layout_height="89.76dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_search"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_backgroundimage"
+                app:layout_constraintEnd_toEndOf="@+id/iv_backgroundimage"
+                app:layout_constraintStart_toStartOf="@+id/iv_backgroundimage"
+                app:layout_constraintTop_toTopOf="@+id/iv_backgroundimage" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_Noordersyet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="@string/no_orders_yet"
+                android:textColor="@color/black"
+                android:textSize="23sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_backgroundimage" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_logBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="You don't have any orders in your history."
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_Noordersyet" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_Orders"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="15dp"
+            android:paddingBottom="30dp"
+            tools:listitem="@layout/item_layout_orders"
+            app:layout_constraintTop_toBottomOf="@+id/layout_buttons"
+            />
+        <ProgressBar
+            android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/montserrat_semibold"
-            android:text="@string/no_orders_yet"
-            android:textColor="@color/black"
-            android:textSize="23sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_backgroundimage" />
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_logBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/montserrat_medium"
-            android:text="You don't have any orders in your history."
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_Noordersyet" />
-
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/rv_Orders"
+            app:layout_constraintEnd_toEndOf="@+id/rv_Orders"
+            app:layout_constraintStart_toStartOf="@+id/rv_Orders"
+            app:layout_constraintTop_toTopOf="@+id/rv_Orders"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -6,6 +6,7 @@ import com.example.deliveryapp.api.ResultResponse
 import com.example.deliveryapp.model.LoginDelivery
 import com.example.deliveryapp.model.LoginDeliveryRequest
 import com.example.deliveryapp.model.LoginResponse
+import com.example.deliveryapp.model.orders.DeliveryBillsItemsResponse
 import com.example.deliveryapp.repository.DeliveryRepository
 import com.example.deliveryapp.repository.RemoteDataSource
 import com.example.deliveryapp.utils.Resource
@@ -21,6 +22,7 @@ class RegisterViewModel @Inject constructor(private val repositry:RemoteDataSour
     ViewModel() {
 
    val loginResponse = MutableLiveData<Resource<LoginResponse>>()
+    val deliveryItemsresponse=MutableLiveData<Resource<DeliveryBillsItemsResponse>>()
 //    val loginResponse = MutableLiveData<ResultEndPoint<ResultResponse<LoginResponse>>>()
 
 //    fun login(lifecycleOwner: LifecycleOwner,loginDelivery: LoginDeliveryRequest){
@@ -46,6 +48,7 @@ class RegisterViewModel @Inject constructor(private val repositry:RemoteDataSour
         val error = Gson().fromJson<LoginResponse>(response.errorBody()!!.string(), LoginResponse::class.java)
         return Resource.Error(error.result.errMsg)
     }
+
 
 
 }

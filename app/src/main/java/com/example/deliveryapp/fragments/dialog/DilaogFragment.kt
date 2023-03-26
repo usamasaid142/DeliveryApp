@@ -93,7 +93,7 @@ class DilaogFragment : DialogFragment() {
                 "${convertLongToDate(date)}",
                 Toast.LENGTH_LONG
             ).show()
-            if (view.id==R.id.layout_from){
+            if (view.id==R.id.layout_btn_from){
                 binding.tvFrom.text=convertLongToDate(date)
             }else{
                 binding.tvTO.text=convertLongToDate(date)

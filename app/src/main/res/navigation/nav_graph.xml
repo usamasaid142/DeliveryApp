@@ -32,4 +32,9 @@
             android:id="@+id/action_ordersFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/dilaogFragment"
+        android:name="com.example.deliveryapp.fragments.dialog.DilaogFragment"
+        android:label="dilaogfragment"
+        tools:layout="@layout/dilaogfragment" />
 </navigation>

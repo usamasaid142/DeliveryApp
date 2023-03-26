@@ -51,8 +51,12 @@ class LoginFragment : Fragment() {
             }else{
                 requireContext().displayToastText("please enter userId and password")
             }
-
         }
+
+        binding.ivLang.setOnClickListener {
+            findNavController().navigate(R.id.dilaogFragment)
+        }
+
     }
 
     private fun callBcakLogin(){

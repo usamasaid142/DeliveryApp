@@ -5,4 +5,10 @@
     <string name="log_back_into_your_account">Log back into your account</string>
     <string name="user_id">User ID</string>
     <string name="log_in">Log in</string>
+    <string name="no_orders_yet">No orders yet</string>
+    <string name="choose_your_preferred_language">Choose Your Preferred Language</string>
+    <string name="arabic">العربية</string>
+    <string name="arabic_en">Arabic</string>
+    <string name="english">English</string>
+    <string name="apply">Apply</string>
 </resources>

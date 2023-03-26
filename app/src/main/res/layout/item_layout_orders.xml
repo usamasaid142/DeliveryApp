@@ -118,6 +118,7 @@
                     app:layout_constraintEnd_toEndOf="@+id/tv_Totalprice"
                     app:layout_constraintTop_toBottomOf="@+id/tv_status"
                     app:layout_constraintBottom_toBottomOf="parent"
+
                     />
                 <ImageView
                     android:id="@+id/imageViewTP"
